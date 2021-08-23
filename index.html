@@ -160,16 +160,14 @@
     </main>
     <!-- backtotop -->
     <a href="#"><img class="topIcon" src="./images/favicon (3).png" alt="backtotopIcon"></a>
-
-
-
     <footer class="mt-3">
       Copyright ©2021 <a href="https://github.com/a120220ms25/travelWebsite">Sabrina Chen</a> . All rights reserved.<br>
       資料來源:交通部觀光資料開放平台、中央氣象局開放資料平台
     </footer>
     
-
     <script>
+  
+  // 隨機圖片放置
       const arr = [
         ["./images/update.jpg"],
         [ "./images/update02.jpg"],
@@ -193,9 +191,8 @@
     }
 
     
-  
     const render = (location) =>{
-      $('.weatherSection').hide();
+     $('.weatherSection').hide();
      $('.banner').show();
      $('.cardGroup').show();
      $('.button').show();
@@ -294,12 +291,7 @@
       }
       render("All");
 
-      // 有url才要show
-      //                <a onclick="javascript:show()">+ 看更多資訊</a>
-      //                ${song.featuring ? `<p>Featuring: ${song.featuring}</p>` : ''}
-
-
-// 看更多按鈕
+// 看更多render
 const render02 = (location) =>{
       let print="";
       let type =($('h2.type').attr("id"));
