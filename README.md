@@ -10,4 +10,5 @@ https://a120220ms25.github.io/travelWebsite/
 2. 使用JQuery操作DOM元素，控制頁面顯示。
 3. 整合Google Analytics套件，利用網站流量統計服務，進行使用者分析。
 4. 使用 DataTables.JS 套件進行視覺美化。
+5. banner製作
 
