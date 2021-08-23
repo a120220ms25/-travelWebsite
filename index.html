@@ -48,7 +48,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#" onclick="render('All')">全台景點</a>
+                  <a class="all nav-link active" aria-current="page" href="#" onclick="render('All')">全台景點</a>
                 </li>   
 
                 <li class="nav-item dropdown">
@@ -116,7 +116,7 @@
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#" onclick="renderWeather()">各地氣象資訊</a>
+                  <a class="weather nav-link active" aria-current="page" href="#" onclick="renderWeather()">各地氣象資訊</a>
                 </li>   
               </ul>   
             </div>
@@ -271,7 +271,7 @@
         print = print + `<div class="col-12"><h2 id="all" class="type text-center fs-3 my-4 fw-bolder"><img style="width:45px" src="images/favicon (7).png"/>${location}</h2></div>`
         for(let i = 0; i<load; i++){
             print += `
-            <div class="col-6 col-md-4">
+            <div class="col-md-4">
                 <div class="item">
                   <img src="${data[i].Picture.PictureUrl1}" onerror="javascript:errpic(this)" ">
                   <div class="txt">
@@ -486,7 +486,7 @@ $(window).scroll(function(){
 
 //navbar在手機的自動收合
 
-$('.nav-link').on('click',function(){
+$('.dropdown-item,.all,.weather').on('click',function(){
   if($(window).width()<480){
     $('.navbar-toggler').click();
   }

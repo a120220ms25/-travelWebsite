@@ -36,6 +36,16 @@ h1{
 .weatherSection{
   display: none;
 }
+
+#DataTables_Table_0_wrapper{
+   margin: 15% auto;
+}
+@media (min-width:768px){
+  #DataTables_Table_0_wrapper{
+    margin: 5% auto;
+ }
+}
+
 /* section */
 .banner{
   height: 450px;
