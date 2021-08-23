@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="description" content="Taiwan tourist attractions information introduction and weather information">
+    <meta name="author" content="Sabrina">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- icon -->
+    <link rel="shortcut icon" href="./images/play.icon" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <!-- jq -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+    </script>
+    <!-- datatable -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
+    <title>play_TAIWAN</title>
+  </head>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid navbar-container">
+              <h1></h1>
+              <a class="navbar-brand" href="#">Travel TAIWAN</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#" onclick="render('All')">全台景點</a>
+                </li>   
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    北部
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#" onclick="render('TaipeiCity')">
+                        台北市
+                      </a>
+                    </li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('NewTaipeiCity')">新北市</a></li>
+                    <!-- <li><a class="dropdown-item" href="#"  onclick="render('Keelung')">基隆市</a></li> -->
+                    <li><a class="dropdown-item" href="#"  onclick="render('Hsinchu')">新竹</a></li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('Taoyuan')">桃園市</a></li>
+                    <!-- <li><a class="dropdown-item" href="#"  onclick="render('TaipeiCity')">新竹市</a></li> -->
+                    <li><a class="dropdown-item" href="#"  onclick="render('Yilan')">宜蘭縣</a></li>
+                  </ul>
+                </li>
+                
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown02" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    中部
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown02">
+                    <li><a class="dropdown-item" href="#"  onclick="render('Taichung')">台中市</a></li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('Miaoli')">苗栗縣</a></li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('Changhua')">彰化縣</a></li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('NantouCounty')">南投縣</a></li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('Yunlin')">雲林縣</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown03" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    南部
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown03">
+                    <li><a class="dropdown-item" href="#"  onclick="render('Kaohsiung')">高雄市</a></li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('Tainan')">台南市</a></li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('Chiayi')">嘉義市</a></li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('ChiayiCounty')">嘉義縣</a></li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('Pingtung')">屏東縣</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown04" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    東部
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown04">
+                    <li><a class="dropdown-item" href="#" onclick="render('Hualien')">花蓮縣</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="render('Taitung')">台東縣</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown05" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    外島
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown05">
+                    <li><a class="dropdown-item" href="#"  onclick="render('Lienchiang')">馬祖</a></li>
+                    <li><a class="dropdown-item" href="#"  onclick="render('Penghu')">澎湖縣</a></li>
+                  </ul>
+                </li>
+
+                
+
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#" onclick="renderWeather()">各地氣象資訊</a>
+                </li>   
+              </ul>
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+      
+            </div>
+          </div>
+        </nav>
+    </header>
+    <main>
+      <div class="weatherSection  my-4">
+        <div class="container">
+          <div class="wrap pt-3">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>編號</th>
+                  <th>城市</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody> 
+            </table>
+          </div>
+          </div>
+      </div>
+      <section class="banner"></section>
+      <!-- <nav class="navSection">
+          <ul class="w-100 p-0 m-0 row">
+            <li class="col-6 col-md-3 p-0"><a  onclick="renderNorth()" href="#north" class="py-3">北部</a></li>
+            <li class="col-6 col-md-3 p-0"><a onclick="renderCentral()" href="#central" class="py-3">中部</a></li>
+            <li class="col-6 col-md-3 p-0"><a  onclick="renderSouth()" href="#south"  class="py-3">南部</a></li>
+            <li class="col-6 col-md-3 p-0"><a onclick="renderEast()" href="#east" class="py-3">東部</a></li>
+          </ul>
+      </nav> -->
+      <!-- cardgroup -->
+      <div class="cardGroup container w-75">
+        <div class="row my-3 justify-content-center">
+        </div>
+      </div> 
+      <div class="button"><button  onclick="render02()">+ 看更多旅遊景點</button></div>
+    </main>
+    <footer>
+      Copyright ©2021 Sabrina Chen. All rights reserved.<br>
+      資料來源:交通部觀光資料開放平台、中央氣象局開放資料平台
+    </footer>
+    
+
+    <script>
+      const arr = [
+        ["./images/update.jpg"],
+        [ "./images/update02.jpg"],
+        ["./images/update03.jpg"],
+        ["./images/update04.jpg"],
+        [ "./images/update06.jpg"]
+    ]
+ 
+    function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+    }
+    function errpic(thepic) {
+     thepic.src = arr[getRandomInt(5)]
+    }
+    function show(){
+      let print = "";
+      print = print +=`
+      <div class="show">12345</div>
+      `
+      $('.cardGroup .row').after(print);
+    }
+
+    
+  
+    const render = (location) =>{
+      $('.weatherSection').hide();
+     $('.banner').show();
+     $('.cardGroup').show();
+     $('.button').show();
+        let print="";
+        switch (location) {
+          case "All":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$select=name%2CDescription%2CPicture&$top=100&$format=JSON";
+          break;
+          case "TaipeiCity":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/Taipei?$select=Name%2CDescription%2CPicture%2CWebsiteUrl&$top=100&$format=JSON";
+          break;
+          case "NewTaipeiCity":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/NewTaipei?$select=Name%2CDescription%2CPicture&$top=100&$format=JSON";
+          break;
+          case "Taoyuan":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/Taoyuan?$select=Name%2CDescription%2CPicture&$top=100&$format=JSON";
+          break;
+          case "Taichung":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Taichung?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Tainan":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Tainan?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Kaohsiung":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Kaohsiung?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          // case "Keelung":
+          //   url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/Keelung?$select=Name%2CDescription%2CPicture&$top=100&$format=JSON";
+          // break;
+          case "Hsinchu":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/HsinchuCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Miaoli":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/MiaoliCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Changhua":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/ChanghuaCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "NantouCounty":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/NantouCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Yunlin":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/YunlinCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "ChiayiCounty":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/ChiayiCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Chiayi":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Chiayi?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Pingtung":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/PingtungCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Yilan":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/YilanCounty?$select=Name%2CDescription%2CPicture&$top=100&$format=JSON";
+          break;
+          case "Hualien":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/HualienCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Taitung":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/TaitungCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Lienchiang":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/LienchiangCounty?$select=name%2CDescription%2CPicture&$format=JSONN";
+          break;
+          case "Penghu":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/PenghuCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+         
+          default:
+            break;
+        }
+      $.get(`${url}`,function(data){
+        const load = 6 ; 
+        print = print + `<div class="col-12"><h2 id="all" class="type text-center fs-3 my-4 fw-bolder"><img style="width:45px" src="images/favicon (1).png"/>${location}</h2></div>`
+        for(let i = 0; i<load; i++){
+            print += `
+            <div class="col-6 col-md-4">
+                <div class="item">
+                  <img src="${data[i].Picture.PictureUrl1}" onerror="javascript:errpic(this)" ">
+                  <div class="txt">
+                    <h2>${data[i].Name}</h2>
+                    <p>
+                      ${data[i].Description}
+                    </p>
+                    ${data[i].WebsiteUrl?`<p>+more info</p>`:""}
+                   
+                  </div>
+                </div>
+              </div>
+              `;
+         }
+        $('.cardGroup .row').html(print);
+      });
+      }
+      render("All");
+
+      // 有url才要show
+      //                <a onclick="javascript:show()">+ 看更多資訊</a>
+      //                ${song.featuring ? `<p>Featuring: ${song.featuring}</p>` : ''}
+
+
+// 看更多按鈕
+const render02 = (location) =>{
+      let print="";
+      let type =($('h2.type').attr("id"));
+
+      switch (location) {
+          case "All":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$select=Name%2CDescription%2CPicture&$top=100&$format=JSON";
+          break;
+          case "TaipeiCity":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/Taipei?$select=Name%2CDescription%2CPicture%2CWebsiteUrl&$top=100&$format=JSON";
+          break;
+          case "NewTaipeiCity":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/NewTaipei?$select=Name%2CDescription%2CPicture&$top=100&$format=JSON";
+          break;
+          case "Taoyuan":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/Taoyuan?$select=Name%2CDescription%2CPicture&$top=100&$format=JSON";
+          break;
+          case "Taichung":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Taichung?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Tainan":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Tainan?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Kaohsiung":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Kaohsiung?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          // case "Keelung":
+          //   url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/Keelung?$select=Name%2CDescription%2CPicture%2CWebsiteUrl%20&$top=100&$format=JSON";
+          // break;
+          case "Hsinchu":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/HsinchuCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Miaoli":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/MiaoliCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Changhua":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/ChanghuaCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "NantouCounty":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/NantouCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Yunlin":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/YilanCounty?$select=Name%2CDescription%2CPicture&$top=100&$format=JSON";
+          break;
+          case "ChiayiCounty":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/ChiayiCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Chiayi":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Chiayi?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Pingtung":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/PingtungCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Yilan":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/YilanCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Hualien":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/HualienCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Taitung":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/TaitungCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+          case "Lienchiang":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/LienchiangCounty?$select=name%2CDescription%2CPicture&$format=JSONN";
+          break;
+          case "Penghu":
+            url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/PenghuCounty?$select=name%2CDescription%2CPicture&$format=JSON";
+          break;
+         
+          default:
+            break;
+        }
+      
+     
+        $.get(`${url}`,function(data){
+        // console.log(data);
+        const load = $('.txt h2').length ; 
+        for(let i = load; i<load+6; i++){
+            print += `
+            <div class="col-6 col-md-4">
+                <div class="item">
+                  <img src="${data[i].Picture.PictureUrl1}" onerror="javascript:errpic(this)" title="${data[i].Name}  圖片更新中...">
+                  <div class="txt">
+                    <h2>${data[i].Name}</h2>
+                    <p>${data[i].Description}</p>
+                  </div>
+                </div>
+              </div>
+              `;
+         }
+        $('.cardGroup .row').append(print);
+        })
+      }
+      
+
+// weather table
+let weatherData;
+  // 方式一
+  // $.ajax({
+  //   url:"https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWB-7E0FDB3F-BB6F-4FD4-9888-DB3BD2CA7A70&downloadType=WEB&format=JSON",
+  //   method:"GET",
+  //   dataType:"json",
+  //   success:function(res){
+  //     weatherData = res.cwbopendata.dataset.location;
+  //   },
+  //   error:function(e){
+  //     console.log(e);
+  //   }
+  
+  // })
+
+  // 方式二 成功 失敗
+    $.getJSON('https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWB-7E0FDB3F-BB6F-4FD4-9888-DB3BD2CA7A70&downloadType=WEB&format=JSON').done(function(res){
+      weatherData = res.cwbopendata.dataset.location;
+
+    const hrTxt = new Array();
+    hrTxt[0]="凌晨";
+    hrTxt[6]="白天";
+    hrTxt[12]="下午";
+    hrTxt[18]="晚上";
+
+    const 
+    time0 = new Date(weatherData[21].weatherElement[0].time[0].startTime),
+    time1 = new Date(weatherData[21].weatherElement[0].time[1].startTime),
+    time2 = new Date(weatherData[21].weatherElement[0].time[2].startTime),
+    timeTxt0 = `${time0.getFullYear() + "/" + (time0.getMonth()+1) +"/" + (time0.getDate())} ${hrTxt[time0.getHours()]} `,
+    timeTxt1 = `${time1.getFullYear() + "/" + (time1.getMonth()+1) +"/" + (time1.getDate())} ${hrTxt[time1.getHours()]} `,
+    timeTxt2 = `${time2.getFullYear() + "/" + (time2.getMonth()+1) +"/" + (time2.getDate())} ${hrTxt[time2.getHours()]} `;
+
+    console.log(timeTxt0, timeTxt1, timeTxt2);
+
+     $("tr th").eq(2).text(timeTxt0);
+     $("tr th").eq(3).text(timeTxt1);
+     $("tr th").eq(4).text(timeTxt2);
+
+
+     const
+     iconTxt0 =(time0.getHours==6||time0.getHours()==12)? "day":"night",
+     iconTxt1 =(time1.getHours==6||time0.getHours()==12)? "day":"night",
+     iconTxt2 =(time2.getHours==6||time0.getHours()==12)? "day":"night";
+
+      for(let i = 0; i < weatherData.length; i++){
+        $("tbody").append(
+        `
+        <tr>
+          <td>${i+1}</td>
+          <td>${weatherData[i].locationName}</td>
+          <td>
+            <img src="images/day/${weatherData[i].weatherElement[0].time[0].parameter.parameterValue}.svg" style="width:30px">
+            ${weatherData[i].weatherElement[0].time[0].parameter.parameterName}&nbsp;&nbsp;
+            ${weatherData[i].weatherElement[2].time[0].parameter.parameterName}~${weatherData[i].weatherElement[1].time[0].parameter.parameterName}度C
+            </td>
+
+          <td>
+            <img src="images/day/${weatherData[i].weatherElement[0].time[1].parameter.parameterValue}.svg" style="width:30px">
+            ${weatherData[i].weatherElement[0].time[1].parameter.parameterName}&nbsp;&nbsp;
+            ${weatherData[i].weatherElement[2].time[1].parameter.parameterName}~${weatherData[i].weatherElement[1].time[1].parameter.parameterName}度C
+            </td>
+
+          <td>
+            <img src="images/day/${weatherData[i].weatherElement[0].time[2].parameter.parameterValue}.svg" style="width:30px">
+            ${weatherData[i].weatherElement[0].time[2].parameter.parameterName}&nbsp;&nbsp;
+            ${weatherData[i].weatherElement[2].time[2].parameter.parameterName}~${weatherData[i].weatherElement[1].time[2].parameter.parameterName}度C
+            </td>
+         </tr>
+        `
+      )
+      }
+        $('.table').DataTable();
+    })
+    
+    function renderWeather() {
+     $('.weatherSection').show();
+     $('.banner').hide();
+     $('.cardGroup').hide();
+     $('.button').hide();
+}
+      
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  </body>
+</html>
