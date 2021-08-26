@@ -1,5 +1,6 @@
 
 ## [Demo](https://a120220ms25.github.io/travelWebsite/)
+預覽連結 : http://220.128.133.15/s1100218/travelWeb/
 https://a120220ms25.github.io/travelWebsite/
 
 ## 內容
